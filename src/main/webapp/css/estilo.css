@@ -1,0 +1,11 @@
+.bot{
+    float:left;
+    width: 50px;
+    height: -40px;
+    background-color: #58db43;
+    bottom: -5px;
+    
+}
+.bot:hover{
+    
+}
