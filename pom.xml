@@ -106,7 +106,7 @@
                             <assembleDirectory>target</assembleDirectory>
                             <programs>
                                 <program>
-                                    <mainClass>HelloWorld</mainClass>
+                                    <mainClass>Servlet</mainClass>
                                     <name>webapp</name>
                                 </program>
                             </programs>
