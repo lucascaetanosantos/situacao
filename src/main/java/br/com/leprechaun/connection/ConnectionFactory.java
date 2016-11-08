@@ -24,5 +24,6 @@ public class ConnectionFactory {
             System.err.println("Erro no banco de dados!\n"+ex);
             return null;
         }
+        //a
     }
 }
