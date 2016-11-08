@@ -24,7 +24,7 @@ public class Servlet extends HttpServlet {
     
     public static void main(String[] args) throws Exception {
         System.out.println("Hello!");
-        Server server = new Server(Integer.valueOf(System.getenv("5000")));
+        Server server = new Server(Integer.valueOf(System.getenv("PORT")));
  
         WebAppContext webAppContext = new WebAppContext("src/main/webapp", "/");
         server.setHandler(webAppContext);

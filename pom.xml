@@ -106,7 +106,7 @@
                             <assembleDirectory>target</assembleDirectory>
                             <programs>
                                 <program>
-                                    <mainClass>Servlet</mainClass>
+                                    <mainClass>Servlet.Main</mainClass>
                                     <name>webapp</name>
                                 </program>
                             </programs>
