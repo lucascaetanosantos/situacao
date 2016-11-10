@@ -24,7 +24,10 @@ public class ControlCadeira {
         String sql = "SELECT * FROM CADEIRA;";
         stmt = conexao.prepareStatement(sql);
         rs = stmt.executeQuery();
-        return (rs.getInt("") == cadeira && rs.getInt("") == fileira);
+        stmt.close();
+        return (rs.getInt("numero_cadeira") != cadeira 
+                && 
+                rs.getInt("numero_fileira") != fileira);
     }
 
     public void cadastrar(int cadeira, int fileira) throws SQLException {
@@ -37,6 +40,7 @@ public class ControlCadeira {
             stmt.setInt(1, cadeira);
             stmt.setInt(2, fileira);
             stmt.executeQuery();
+            stmt.close();
         } else {
             System.out.println("Lugar ocupado, tente novamente");
         }
@@ -50,14 +54,6 @@ public class ControlCadeira {
             listaCadeira.add(cadeira);
         }
         return listaCadeira;
-    }
-
-    public void excluir(int idCadeira) {
-        for (ModelCadeira modelCadeira : listaCadeira) {
-            if (modelCadeira.getIdCadeira() == idCadeira) {
-                listaCadeira.remove(rs);
-            }
-        }
     }
 
 }
