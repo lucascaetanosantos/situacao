@@ -78,7 +78,7 @@ public class ControlCliente {
     }
 
     public void excluir(int id) {
-        String sql = "DELETE FROM AUTOMOVEL WHERE AUT_ID = ?;";
+        String sql = "DELETE FROM cliente WHERE id = ?;";
         try {
             stmt = connection.prepareStatement(sql);
             stmt.setInt(1, id);

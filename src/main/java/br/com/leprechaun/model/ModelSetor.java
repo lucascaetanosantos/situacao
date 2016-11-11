@@ -5,6 +5,15 @@ public class ModelSetor {
     
     String corSetor;
     ModelCadeira modelCadeira;
+    int idSetor;
+
+    public int getIdSetor() {
+        return idSetor;
+    }
+
+    public void setIdSetor(int idSetor) {
+        this.idSetor = idSetor;
+    }
 
     public String getCorSetor() {
         return corSetor;

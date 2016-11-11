@@ -9,6 +9,15 @@ public class ModelIngressos {
     ModelSetor modelSetor;
     ModelCliente modelCliente;
     ModelJogos modelJogos;
+    int idIngressos;
+
+    public int getIdIngressos() {
+        return idIngressos;
+    }
+
+    public void setIdIngressos(int idIngressos) {
+        this.idIngressos = idIngressos;
+    }
 
     public Date getDataHora() {
         return dataHora;
