@@ -4,6 +4,7 @@ import br.com.leprechaun.connection.ConnectionFactory;
 import br.com.leprechaun.model.ModelJogos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ public class ControlJogos {
     Connection connection;
     List<ModelJogos> listaJogos = new ArrayList<>();
     PreparedStatement stmt;
+    ResultSet rs;
 
     public ControlJogos() {
         this.connection = new ConnectionFactory().getConnection();
@@ -29,12 +31,17 @@ public class ControlJogos {
         }
     }
 
-    public List<ModelJogos> listar() {
-        for (ModelJogos jogos : listaJogos) {
+    public List<ModelJogos> getLista() throws SQLException {
+
+        String sql = "SELECT * FROM jogos";
+        stmt = connection.prepareStatement(sql);
+        rs = stmt.executeQuery();
+
+        while (rs.next()) {
             ModelJogos modelJogos = new ModelJogos();
-            jogos.setIdJogo(modelJogos.getIdJogo());
-            jogos.setDiaJogo(modelJogos.getDiaJogo());
-            listaJogos.add(jogos);
+            modelJogos.setIdJogo(rs.getInt("id"));
+            modelJogos.setDiaJogo(rs.getInt("dia_jogo"));
+            listaJogos.add(modelJogos);
         }
         return listaJogos;
     }

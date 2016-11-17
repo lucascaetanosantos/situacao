@@ -46,12 +46,18 @@ public class ControlCadeira {
         }
     }
 
-    public List<ModelCadeira> listar() {
-        for (ModelCadeira cadeira : listaCadeira) {
+    public List<ModelCadeira> getLista() throws SQLException{
+        
+        String sql = "SELECT * FROM cadeira";
+        stmt = conexao.prepareStatement(sql);
+        rs = stmt.executeQuery();
+        
+        while (rs.next()) {
             ModelCadeira modelCadeira = new ModelCadeira();
-            cadeira.setNumeroCadeira(modelCadeira.getNumeroCadeira());
-            cadeira.setNumeroFileira(modelCadeira.getNumeroFileira());
-            listaCadeira.add(cadeira);
+            modelCadeira.setIdCadeira(rs.getInt("id"));
+            modelCadeira.setNumeroCadeira(rs.getInt("numero_cadeira"));
+            modelCadeira.setNumeroFileira(rs.getInt("numero_fileira"));
+            listaCadeira.add(modelCadeira);
         }
         return listaCadeira;
     }

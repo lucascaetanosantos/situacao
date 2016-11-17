@@ -2,11 +2,13 @@ package br.com.leprechaun.controller;
 
 import br.com.leprechaun.connection.ConnectionFactory;
 import br.com.leprechaun.model.ModelCliente;
+import br.com.leprechaun.model.ModelIngressos;
 import br.com.leprechaun.model.ModelJogos;
 import br.com.leprechaun.model.ModelSetor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 public class ControlIngressos {
 

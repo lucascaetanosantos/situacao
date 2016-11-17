@@ -36,7 +36,7 @@ public class ControlSetor {
 
     }
 
-    public List<ModelSetor> listar() throws SQLException {
+    public List<ModelSetor> getLista() throws SQLException {
 
         String sql = "SELECT * FROM SETOR"
                 + "INNER JOIN CADEIRA";
