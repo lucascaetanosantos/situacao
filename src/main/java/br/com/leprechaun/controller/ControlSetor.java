@@ -13,7 +13,7 @@ import java.util.List;
 public class ControlSetor {
 
     Connection connection;
-    List<ModelSetor> listaSetor = new ArrayList<>();
+    public List<ModelSetor> listaSetor = new ArrayList<>();
     PreparedStatement stmt;
     ResultSet rs;
 
@@ -21,13 +21,13 @@ public class ControlSetor {
         this.connection = new ConnectionFactory().getConnection();
     }
 
-    public void adicionar(String corNovoSetor, ModelCadeira cadeira) {
+    public void adicionar(String corSetor, ModelCadeira cadeira) {
 
         String sql = "INSERT INTO SETOR(cor_setor, id_cadeira) VALUES (?,?);";
 
         try {
             stmt = connection.prepareStatement(sql);
-            stmt.setString(1, corNovoSetor);
+            stmt.setString(1, corSetor);
             stmt.setInt(2, cadeira.getIdCadeira());
             stmt.executeQuery();
         } catch (Exception e) {
@@ -35,7 +35,7 @@ public class ControlSetor {
         }
 
     }
-
+    
     public List<ModelSetor> getLista() throws SQLException {
 
         String sql = "SELECT * FROM SETOR"

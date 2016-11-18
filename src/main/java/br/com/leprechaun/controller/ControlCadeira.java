@@ -14,7 +14,7 @@ public class ControlCadeira {
     Connection conexao;
     PreparedStatement stmt;
     ResultSet rs;
-    List<ModelCadeira> listaCadeira = new ArrayList<>();
+    public List<ModelCadeira> listaCadeira = new ArrayList<>();
 
     public ControlCadeira() {
         this.conexao = new ConnectionFactory().getConnection();

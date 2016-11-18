@@ -12,7 +12,7 @@ import java.util.List;
 public class ControlJogos {
 
     Connection connection;
-    List<ModelJogos> listaJogos = new ArrayList<>();
+    public List<ModelJogos> listaJogos = new ArrayList<>();
     PreparedStatement stmt;
     ResultSet rs;
 

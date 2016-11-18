@@ -14,7 +14,7 @@ public class ControlCliente {
     Connection connection;
     PreparedStatement stmt;
     ResultSet rs;
-    List<ModelCliente> listaCliente = new ArrayList<>();
+    public List<ModelCliente> listaCliente = new ArrayList<>();
 
     public ControlCliente() {
         this.connection = new ConnectionFactory().getConnection();
