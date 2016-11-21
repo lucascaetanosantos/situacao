@@ -5,6 +5,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cabecalho</title>
 
+        <link rel="icon" type="image/png" sizes="96x96" href="imagens/favicon-96x96.png">
+        
+        <!--Parallax-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+        <script src="javascript/parallax.js"></script>
+
+        <link rel="stylesheet" href="css/parallax.css">
+        <!--Fim-->
+
         <!--Livraria JQuery-->
         <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
 
@@ -21,7 +31,7 @@
                     <img src="imagens/leprechaun.png" style="width: 40px">
                 </li>
                 <li class="nav nav-item">
-                    <button class="btn btn-outline-success">Home</button>
+                    <a href="index.jsp"><button class="btn btn-outline-success">Home</button></a>
                 </li>
                 <li class="nav nav-item">
                     <button class="btn btn-outline-success">Ingressos</button>

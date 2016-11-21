@@ -10,15 +10,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Promocao</title>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="javascript/parallax.js"></script>
-
-        <link rel="stylesheet" href="css/parallax.css">
-
+        
     </head>
     <body>
-
         <c:import url="cabecalho.jsp"/>
 
         <div class="parallax-window" data-parallax="scroll" data-image-src="imagens/Estadio.jpg"></div>

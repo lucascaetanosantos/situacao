@@ -34,7 +34,7 @@ public class Email extends HttpServlet {
         ControlEmail ctrlEmail = new ControlEmail();
         ctrlEmail.sendMail("leprechaunsuporte@gmail.com", email, "Desconto Leprechaun", mensagemCliente);
         
-        String mensagemInterna = "Nome do cliente: "+nome+"\nEmail: "+email+"\nIdade: "+idade+"\nCógigo promocional: "+codigo;
+        String mensagemInterna = "Nome do cliente: "+nome+"\nEmail: "+email+"\nIdade: "+idade+"\nCódigo promocional: "+codigo;
         
         ctrlEmail.sendMail("leprechaunsuporte@gmail.com", "leprechaunsuporte@gmail.com", "Novo Cliente Cadastrado", mensagemInterna);
         
