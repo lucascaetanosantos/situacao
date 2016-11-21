@@ -30,6 +30,7 @@
                 <li class="nav nav-item">
                     <img src="imagens/leprechaun.png" style="width: 40px">
                 </li>
+                <div class="col-sm-6 offset-md-4">
                 <li class="nav nav-item">
                     <a href="index.jsp"><button class="btn btn-outline-success">Home</button></a>
                 </li>
@@ -52,6 +53,7 @@
 
                     </div>
                 </li>
+                </div>
             </ul>
         </nav>
 

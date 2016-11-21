@@ -35,25 +35,29 @@ public class ControlSetor {
         }
 
     }
-    
-    public List<ModelSetor> getLista() throws SQLException {
+
+    public List<ModelSetor> getLista() {
 
         String sql = "SELECT * FROM SETOR"
                 + "INNER JOIN CADEIRA";
-        stmt = connection.prepareStatement(sql);
-        rs = stmt.executeQuery();
+        try {
+            stmt = connection.prepareStatement(sql);
+            rs = stmt.executeQuery();
 
-        while (rs.next()) {
-            ModelSetor modelSetor = new ModelSetor();
-            modelSetor.setIdSetor(rs.getInt("id"));
-            modelSetor.setCorSetor(rs.getString("cor_setor"));
+            while (rs.next()) {
+                ModelSetor modelSetor = new ModelSetor();
+                modelSetor.setIdSetor(rs.getInt("id"));
+                modelSetor.setCorSetor(rs.getString("cor_setor"));
 
-            ModelCadeira modelCadeira = new ModelCadeira();
-            modelCadeira.setIdCadeira(rs.getInt("id_cadeira"));
-            modelCadeira.setNumeroCadeira(rs.getInt("numero_cadeira"));
-            modelCadeira.setNumeroFileira(rs.getInt("numero_fileira"));
-            modelSetor.setModelCadeira(modelCadeira);
-            listaSetor.add(modelSetor);
+                ModelCadeira modelCadeira = new ModelCadeira();
+                modelCadeira.setIdCadeira(rs.getInt("id_cadeira"));
+                modelCadeira.setNumeroCadeira(rs.getInt("numero_cadeira"));
+                modelCadeira.setNumeroFileira(rs.getInt("numero_fileira"));
+                modelSetor.setModelCadeira(modelCadeira);
+                listaSetor.add(modelSetor);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro Sql verificaCadeira: " + ex);
         }
         return listaSetor;
     }

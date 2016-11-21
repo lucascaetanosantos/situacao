@@ -20,45 +20,56 @@ public class ControlCadeira {
         this.conexao = new ConnectionFactory().getConnection();
     }
 
-    public boolean verificaCadeira(int cadeira, int fileira) throws SQLException {
+    public boolean verificaCadeira(int cadeira, int fileira) {
         String sql = "SELECT * FROM CADEIRA;";
-        stmt = conexao.prepareStatement(sql);
-        rs = stmt.executeQuery();
-        stmt.close();
-        return (rs.getInt("numero_cadeira") != cadeira
-                && rs.getInt("numero_fileira") != fileira);
+        boolean verificacao = false;
+        try {
+            stmt = conexao.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            stmt.close();
+            verificacao = (rs.getInt("numero_cadeira") != cadeira
+                    && rs.getInt("numero_fileira") != fileira);
+        } catch (SQLException ex) {
+            System.out.println("Erro Sql verificaCadeira: " + ex);
+        }
+        return verificacao;
     }
 
-    public void cadastrar(int cadeira, int fileira) throws SQLException {
+    public void cadastrar(int cadeira, int fileira) {
         if (verificaCadeira(cadeira, fileira)) {
             String sql = ""
                     + "INSERT INTO CADEIRA(numero_cadeira, numero_fileira) "
                     + "values (?,?);";
-
-            stmt = conexao.prepareStatement(sql);
-            stmt.setInt(1, cadeira);
-            stmt.setInt(2, fileira);
-            stmt.executeQuery();
-            stmt.close();
+            try {
+                stmt = conexao.prepareStatement(sql);
+                stmt.setInt(1, cadeira);
+                stmt.setInt(2, fileira);
+                stmt.executeQuery();
+                stmt.close();
+            } catch (SQLException ex) {
+                System.out.println("Erro Sql cadastrarCadeira: " + ex);
+            }
         } else {
             System.out.println("Lugar ocupado, tente novamente");
         }
     }
 
-    public List<ModelCadeira> getLista() throws SQLException {
-
+    public List<ModelCadeira> getLista() {
         String sql = "SELECT * FROM cadeira";
-        stmt = conexao.prepareStatement(sql);
-        rs = stmt.executeQuery();
+        try {
+            stmt = conexao.prepareStatement(sql);
+            rs = stmt.executeQuery();
 
-        while (rs.next()) {
-            ModelCadeira modelCadeira = new ModelCadeira();
-            modelCadeira.setIdCadeira(rs.getInt("id"));
-            modelCadeira.setNumeroCadeira(rs.getInt("numero_cadeira"));
-            modelCadeira.setNumeroFileira(rs.getInt("numero_fileira"));
-            listaCadeira.add(modelCadeira);
+            while (rs.next()) {
+                ModelCadeira modelCadeira = new ModelCadeira();
+                modelCadeira.setIdCadeira(rs.getInt("id"));
+                modelCadeira.setNumeroCadeira(rs.getInt("numero_cadeira"));
+                modelCadeira.setNumeroFileira(rs.getInt("numero_fileira"));
+                listaCadeira.add(modelCadeira);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro Sql verificaCadeira: " + ex);
         }
         return listaCadeira;
     }
-
 }

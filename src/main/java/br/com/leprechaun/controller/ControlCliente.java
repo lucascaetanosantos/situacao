@@ -20,45 +20,58 @@ public class ControlCliente {
         this.connection = new ConnectionFactory().getConnection();
     }
 
-    public boolean verificaCliente(ModelCliente cliente) throws SQLException {
+    public boolean verificaCliente(ModelCliente cliente) {
         String sql = "SELECT * FROM CLIENTE";
-        stmt = connection.prepareStatement(sql);
-        rs = stmt.executeQuery();
-        stmt.close();
-        return (!(rs.getString("nome_cliente").equals(cliente.getNomeCliente()))
-                && rs.getInt("id") != cliente.getIdCliente());
+        boolean verificacao = false;
+        try {
+            stmt = connection.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            stmt.close();
+            verificacao = (!(rs.getString("nome_cliente").equals(cliente.getNomeCliente()))
+                    && rs.getInt("id") != cliente.getIdCliente());
+        } catch (SQLException ex) {
+            System.out.println("Erro Sql verificaCliente: " + ex);
+        }
+        return verificacao;
     }
 
-    public void cadastrar(ModelCliente cliente) throws SQLException {
+    public void cadastrar(ModelCliente cliente) {
 
         String sql = ""
                 + "INSERT INTO CLIENTE(nome_cliente, email_cliente)"
                 + "VALUES (?,?);";
-
-        if (verificaCliente(cliente)) {
-            stmt = connection.prepareStatement(sql);
-            stmt.setString(1, cliente.getNomeCliente());
-            stmt.setString(2, cliente.getEmailCliente());
-            stmt.executeQuery();
-            stmt.close();
-        } else {
-            System.out.println("Cliente já existe");
+        try {
+            if (verificaCliente(cliente)) {
+                stmt = connection.prepareStatement(sql);
+                stmt.setString(1, cliente.getNomeCliente());
+                stmt.setString(2, cliente.getEmailCliente());
+                stmt.executeQuery();
+                stmt.close();
+            } else {
+                System.out.println("Cliente já existe");
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro Sql verificaCadeira: " + ex);
         }
 
     }
 
-    public List<ModelCliente> getLista() throws SQLException{
-        
+    public List<ModelCliente> getLista() {
+
         String sql = "SELECT * FROM cliente";
-        stmt = connection.prepareStatement(sql);
-        rs = stmt.executeQuery();
-        
-        while (rs.next()) {
-            ModelCliente cliente = new ModelCliente();
-            cliente.setIdCliente(rs.getInt("id"));
-            cliente.setNomeCliente(rs.getString("nome_cliente"));
-            cliente.setEmailCliente(rs.getString("email_cliente"));
-            listaCliente.add(cliente);
+        try {
+            stmt = connection.prepareStatement(sql);
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                ModelCliente cliente = new ModelCliente();
+                cliente.setIdCliente(rs.getInt("id"));
+                cliente.setNomeCliente(rs.getString("nome_cliente"));
+                cliente.setEmailCliente(rs.getString("email_cliente"));
+                listaCliente.add(cliente);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro Sql verificaCadeira: " + ex);
         }
         return listaCliente;
     }

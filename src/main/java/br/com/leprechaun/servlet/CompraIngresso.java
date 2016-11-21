@@ -41,7 +41,7 @@ public class CompraIngresso extends HttpServlet {
             //SETOR -----------------------------------------------------------
             ControlCadeira controlCadeira = new ControlCadeira();
             controlCadeira.cadastrar(cadeira, fileira);
-            for (ModelCadeira modelCadeira : controlCadeira.listaCadeira) {
+            for (ModelCadeira modelCadeira : controlCadeira.getLista()) {
                 if (modelCadeira.getNumeroCadeira() == cadeira
                         && modelCadeira.getNumeroFileira() == fileira) {
                     cadeiraModelSetor = modelCadeira;
@@ -49,7 +49,7 @@ public class CompraIngresso extends HttpServlet {
             }
             ControlSetor controlSetor = new ControlSetor();
             controlSetor.adicionar(corSetor, cadeiraModelSetor);
-            for (ModelSetor modelSetor : controlSetor.listaSetor) {
+            for (ModelSetor modelSetor : controlSetor.getLista()) {
                 if (modelSetor.getCorSetor().equals(corSetor)) {
                     setorModelSetor = modelSetor;
                 }
@@ -60,7 +60,7 @@ public class CompraIngresso extends HttpServlet {
             modelCliente.setNomeCliente(nomeCliente);
             modelCliente.setEmailCliente(emailCliente);
             controlCliente.cadastrar(modelCliente);
-            for (ModelCliente clienteModel : controlCliente.listaCliente) {
+            for (ModelCliente clienteModel : controlCliente.getLista()) {
                 if (clienteModel.getNomeCliente().equals(nomeCliente)
                         && clienteModel.getEmailCliente().equals(emailCliente)) {
                     clienteModelSetor = clienteModel;
@@ -70,7 +70,7 @@ public class CompraIngresso extends HttpServlet {
             ModelJogos modelJogos = new ModelJogos();
             modelJogos.setDiaJogo(diaJogo);
             ControlJogos controlJogos = new ControlJogos();
-            for (ModelJogos jogosControl : controlJogos.listaJogos) {
+            for (ModelJogos jogosControl : controlJogos.getLista()) {
                 if (jogosControl.getDiaJogo() == diaJogo) {
                     jogosModelSetor = jogosControl;
                 }
@@ -81,6 +81,8 @@ public class CompraIngresso extends HttpServlet {
 
         } catch (SQLException ex) {
             System.out.println("Erro ao comprar ingresso: " + ex);
+        } catch (NullPointerException e) {
+            System.out.println("Nenhum objeto encontrado" + e);
         }
 
     }

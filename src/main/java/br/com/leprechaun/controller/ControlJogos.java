@@ -31,17 +31,21 @@ public class ControlJogos {
         }
     }
 
-    public List<ModelJogos> getLista() throws SQLException {
+    public List<ModelJogos> getLista() {
 
         String sql = "SELECT * FROM jogos";
-        stmt = connection.prepareStatement(sql);
-        rs = stmt.executeQuery();
+        try {
+            stmt = connection.prepareStatement(sql);
+            rs = stmt.executeQuery();
 
-        while (rs.next()) {
-            ModelJogos modelJogos = new ModelJogos();
-            modelJogos.setIdJogo(rs.getInt("id"));
-            modelJogos.setDiaJogo(rs.getInt("dia_jogo"));
-            listaJogos.add(modelJogos);
+            while (rs.next()) {
+                ModelJogos modelJogos = new ModelJogos();
+                modelJogos.setIdJogo(rs.getInt("id"));
+                modelJogos.setDiaJogo(rs.getInt("dia_jogo"));
+                listaJogos.add(modelJogos);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro Sql verificaCadeira: " + ex);
         }
         return listaJogos;
     }
