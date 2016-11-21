@@ -24,15 +24,19 @@ public class Email extends HttpServlet {
         System.out.println(nome + email + idade);
 
         Random ran = new Random();
-        int codigo = ran.nextInt(9999);
+        int codigo = ran.nextInt(9999)+99999;
         
-        String mensagem ="Sr. "+nome+"\nSeu código promocional é: "
+        String mensagemCliente ="Sr. "+nome+"\nSeu código promocional é: "
                 +codigo+"\nApresente esse código a um de nossos representantes e"
                 + " ganhe 10% de desconto na compra de qualquer intem da nossa "
                 + "loja.\nAtt. Leprechaun.";
         
         ControlEmail ctrlEmail = new ControlEmail();
-        ctrlEmail.sendMail("leprechaunsuporte@gmail.com", email, "Desconto Leprechaun", mensagem);
+        ctrlEmail.sendMail("leprechaunsuporte@gmail.com", email, "Desconto Leprechaun", mensagemCliente);
+        
+        String mensagemInterna = "Nome do cliente: "+nome+"\nEmail: "+email+"\nIdade: "+idade+"\nCógigo promocional: "+codigo;
+        
+        ctrlEmail.sendMail("leprechaunsuporte@gmail.com", "leprechaunsuporte@gmail.com", "Novo Cliente Cadastrado", mensagemInterna);
         
         response.sendRedirect("index.jsp");
     }
