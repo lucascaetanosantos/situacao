@@ -25,9 +25,8 @@ public class ControlCadeira {
         stmt = conexao.prepareStatement(sql);
         rs = stmt.executeQuery();
         stmt.close();
-        return (rs.getInt("numero_cadeira") != cadeira 
-                && 
-                rs.getInt("numero_fileira") != fileira);
+        return (rs.getInt("numero_cadeira") != cadeira
+                && rs.getInt("numero_fileira") != fileira);
     }
 
     public void cadastrar(int cadeira, int fileira) throws SQLException {
@@ -46,12 +45,12 @@ public class ControlCadeira {
         }
     }
 
-    public List<ModelCadeira> getLista() throws SQLException{
-        
+    public List<ModelCadeira> getLista() throws SQLException {
+
         String sql = "SELECT * FROM cadeira";
         stmt = conexao.prepareStatement(sql);
         rs = stmt.executeQuery();
-        
+
         while (rs.next()) {
             ModelCadeira modelCadeira = new ModelCadeira();
             modelCadeira.setIdCadeira(rs.getInt("id"));

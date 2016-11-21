@@ -18,7 +18,7 @@ public class ConnectionFactory {
             conn = DriverManager.getConnection(url, user, pass );*/
             
             Class.forName("com.mysql.jdbc.Driver");
-            String host = "192.68.0.62";
+            String host = "localhost";
             String port = "3306";
             String database = "estadio";
             String url = "jdbc:mysql://"+host+":"+port+"/"+database;

@@ -1,11 +1,23 @@
-.bot{
-    float:left;
-    width: 50px;
-    height: -40px;
-    background-color: #58db43;
-    bottom: -5px;
+.fbIcon{
+    width: 40px;
+    height: 40px;
+    background-image: url(../imagens/FacebookF.png);
+    background-size: 40px 40px;
+}
+
+.fbIcon:hover{
+    background-image: url(../imagens/FacebookT.png);
     
 }
-.bot:hover{
+
+.ghIcon{
+    width: 40px;
+    height: 40px;
+    background-image: url(../imagens/GitHubF.png);
+    background-size: 40px 40px;
+}
+
+.ghIcon:hover{
+    background-image: url(../imagens/GitHubT.png);
     
 }
