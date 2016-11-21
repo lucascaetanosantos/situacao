@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Email", urlPatterns = {"/Email"})
 public class Email extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
@@ -26,7 +26,11 @@ public class Email extends HttpServlet {
         Random ran = new Random();
         int codigo = ran.nextInt(9999);
         
-        String mensagem = "Sr. " + nome + "\nSeu código promocional é: " + codigo + "\nApresente esse código a um de nossos representantes e ganhe 10% de desconto na compra de qualquer intem da nossa loja.\nAtt. Leprechaun.";
+        String mensagem ="Sr. "+nome+"\nSeu código promocional é: "
+                +codigo+"\nApresente esse código a um de nossos representantes e"
+                + " ganhe 10% de desconto na compra de qualquer intem da nossa "
+                + "loja.\nAtt. Leprechaun.";
+        
         ControlEmail ctrlEmail = new ControlEmail();
         ctrlEmail.sendMail("leprechaunsuporte@gmail.com", email, "Desconto Leprechaun", mensagem);
         

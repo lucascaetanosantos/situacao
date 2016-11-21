@@ -36,7 +36,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="#">Estadio</a>
                         <a class="dropdown-item" href="#">Setores</a>
-                        <a class="dropdown-item" href="#">Promoção</a>
+                        <a class="dropdown-item" href="promocao.jsp">Promoção</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Contato</a>
 

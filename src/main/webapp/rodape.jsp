@@ -29,8 +29,8 @@
                 </div>
                 <div class="col-sm-4 ">
                     <ul class="nav navbar-nav float-xs-right">
-                        <li class="nav nav-item ghIcon"><a href="https://www.facebook.com/groups/254352771591363/"></a></li>
-                        <li class="nav nav-item fbIcon"><a href="https://github.com/leprechaun-irish"></a></li>
+                        <a class="nav nav-item ghIcon" href="https://github.com/leprechaun-irish"><li ></li></a>
+                        <a class="nav nav-item fbIcon" href="https://www.facebook.com/groups/254352771591363/"><li></li></a>
                     </ul>
                 </div>
             </div>
