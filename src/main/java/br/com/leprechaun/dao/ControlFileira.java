@@ -17,10 +17,10 @@ public class ControlFileira {
     this.conn = new ConnectionFactory().getConnection();
     }
     
-    public void cadastraFileira(int fileira) throws SQLException {
+    public void cadastraFileira(ModelFileira fileira) throws SQLException {
         String sql = "INSERT INTO FILEIRA(FIL_ID) VALUES(?)";
         PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, fileira);
+        stmt.setInt(1, fileira.getIdFileira());
         stmt.execute();
     }
     
